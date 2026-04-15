@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-primary: #e63946;
+  --color-primary-hover: #d62839;
+  --color-primary-glow: rgba(230, 57, 70, 0.4);
+  --color-secondary: #1d3557;
+  --color-accent: #f1faee;
+  
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --shadow-primary-glow: 0 0 20px rgba(230, 57, 70, 0.4);
+
+  --background-image-blueprint: linear-gradient(rgba(230, 57, 70, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 57, 70, 0.05) 1px, transparent 1px);
+  --background-image-blueprint-fine: linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+
+  --animate-gradient-move: gradient-move 8s linear infinite;
+
+  @keyframes gradient-move {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+  }
+}
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-inter text-[#333333] bg-white leading-relaxed overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-semibold text-secondary;
+  }
+}
+
+@layer utilities {
+  .blueprint-bg {
+    background-image: var(--background-image-blueprint);
+    background-size: 40px 40px;
+  }
+  
+  .blueprint-bg-fine {
+    background-image: var(--background-image-blueprint-fine);
+    background-size: 10px 10px;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/30;
+  }
+
+  .animate-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient-move;
+  }
+}
+
+.hero-overlay {
+  background: radial-gradient(circle at 50% 50%, rgba(230, 57, 70, 0.03) 0%, transparent 70%);
+}
